@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HAProxy Load Balancer - Demonstração</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #eef1f5;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .header {
+            background: #005eff;
+            color: white;
+            padding: 20px;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .container {
+            margin: 40px auto;
+            width: 60%;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+        }
+
+        .tag {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: #005eff;
+            color: white;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        h2 {
+            margin-top: 40px;
+            color: #222;
+        }
+
+        p {
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .box {
+            background: #f5f7fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 5px solid #005eff;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        Demonstração de Balanceamento de Carga com HAProxy
+    </div>
+
+    <div class="container">
+        <h1>Servidor que respondeu:</h1>
+        <div class="tag">{{ servidor }}</div>
+
+        <p>Horário da resposta: <b>{{ horario }}</b></p>
+
+        <hr style="margin: 40px 0;">
+
+        <h2>Como funciona este projeto?</h2>
+
+        <div class="box">
+            <p><b>HAProxy</b> está sendo usado como balanceador de carga. Ele recebe requisições e distribui para 3 instâncias Flask:</p>
+
+            <ul>
+                <li>app1</li>
+                <li>app2</li>
+                <li>app3</li>
+            </ul>
+
+            <p>Você pode testar os algoritmos:</p>
+
+            <p><b>▶ Round Robin:</b> localhost:8080  
+            <br>Distribui as requisições em sequência (1 → 2 → 3 → 1…)</p>
+
+            <p><b>▶ Least Connections:</b> localhost:8081  
+            <br>Envia para o servidor menos ocupado.</p>
+        </div>
+
+        <h2>Objetivo</h2>
+
+        <p>
+            Esta demonstração mostra visualmente qual servidor está processando sua requisição.
+            Recarregue a página várias vezes para ver o balanceamento funcionando.
+        </p>
+    </div>
+</body>
+</html>
